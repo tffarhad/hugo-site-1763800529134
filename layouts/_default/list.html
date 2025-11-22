@@ -1,0 +1,60 @@
+{{ define "title" }}
+    {{ if .IsHome }}
+        {{ .Site.Title }}
+    {{ else }}
+        {{ .Title }} | {{ .Site.Title }}
+    {{ end }}
+{{ end }}
+
+{{ define "main" }}
+<div class="container">
+    {{ if .IsHome }}
+        <section class="hero-section">
+            <h1 class="hero-title">{{ .Title }}</h1>
+            <p class="hero-description">{{ .Description }}</p>
+            <a href="/menu/" class="button hero-button">View Our Menu</a>
+        </section>
+        <section class="home-content">
+            {{ .Content }}
+        </section>
+        {{/* Display recent blog posts on the homepage */}}
+        {{ $recentPosts := first 3 (where .Site.RegularPages "Type" "in" (slice "posts")) }}
+        {{ if $recentPosts }}
+        <section class="recent-posts">
+            <h2>From Our Blog</h2>
+            <div class="post-list">
+                {{ range $recentPosts }}
+                    <article class="post-item">
+                        <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+                        <div class="post-meta">
+                            <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "January 2, 2006" }}</time>
+                        </div>
+                        <p>{{ .Summary }}</p>
+                        <a href="{{ .Permalink }}" class="read-more">Read More &rarr;</a>
+                    </article>
+                {{ end }}
+            </div>
+        </section>
+        {{ end }}
+    {{ else }}
+        <header class="page-header">
+            <h1 class="page-title">{{ .Title }}</h1>
+        </header>
+        <div class="list-container">
+            {{ range .Paginator.Pages }}
+                <article class="list-item">
+                    <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+                    <div class="list-meta">
+                        {{ if not .Date.IsZero }}
+                            <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "January 2, 2006" }}</time>
+                        {{ end }}
+                    </div>
+                    <p>{{ .Summary }}</p>
+                    <a href="{{ .Permalink }}" class="read-more">Read More &rarr;</a>
+                </article>
+            {{ end }}
+            {{ partial "pagination.html" . }} {{/* Add pagination partial if needed */}}
+        </div>
+    {{ end }}
+</div>
+{{ end }}
