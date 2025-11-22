@@ -1,0 +1,38 @@
+baseURL = "http://example.org/"
+languageCode = "en-us"
+title = "The Flour & Bloom Bakery"
+theme = "" # No external theme, using custom layouts
+
+[params]
+  description = "Freshly baked goods, artisan bread, and delicious pastries."
+  address = "123 Main Street, Anytown, USA"
+  phone = "(555) 123-4567"
+  email = "hello@flourandbloom.com"
+  hours = "Mon-Sat: 7 AM - 6 PM, Sun: 8 AM - 3 PM"
+
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = 10
+  [[menu.main]]
+    identifier = "about"
+    name = "About Us"
+    url = "/about/"
+    weight = 20
+  [[menu.main]]
+    identifier = "menu"
+    name = "Our Menu"
+    url = "/menu/"
+    weight = 30
+  [[menu.main]]
+    identifier = "blog"
+    name = "Blog"
+    url = "/posts/"
+    weight = 40
+  [[menu.main]]
+    identifier = "contact"
+    name = "Contact"
+    url = "/contact/"
+    weight = 50
