@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to The Flour & Bloom Bakery | The Flour & Bloom Bakery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+/* General Styling */
+:root {
+    --primary-color: #A0522D; /* Sienna - earthy brown */
+    --secondary-color: #F4A460; /* Sandy Brown - warmer accent */
+    --accent-color: #6B8E23; /* Olive Drab - subtle green for freshness */
+    --text-dark: #333;
+    --text-light: #fdfdfd;
+    --background-light: #FFFAF0; /* Floral White - light creamy background */
+    --background-dark: #2c2c2c;
+    --border-color: #ddd;
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Open Sans', sans-serif;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    color: var(--text-dark);
+    background-color: var(--background-light);
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    margin-top: 1.5em;
+    margin-bottom: 0.8em;
+    line-height: 1.2;
+}
+
+h1 { font-size: 2.8em; }
+h2 { font-size: 2.2em; }
+h3 { font-size: 1.8em; }
+
+p {
+    margin-bottom: 1em;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: var(--secondary-color);
+    text-decoration: none;
+}
+
+/* Header */
+#site-header {
+    background-color: var(--text-light);
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-title {
+    font-family: var(--font-heading);
+    font-size: 2.5em;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+    white-space: nowrap; /* Prevent wrapping for long titles */
+}
+
+#site-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+#site-nav li {
+    margin-left: 30px;
+}
+
+#site-nav a {
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+#site-nav a:hover {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.menu-toggle {
+    display: none; /* Hidden by default on desktop */
+    font-size: 1.8em;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--primary-color);
+    padding: 5px 10px;
+}
+
+/* Main Content */
+main {
+    padding: 40px 0;
+}
+
+/* Hero Section (Homepage specific) */
+.hero-section {
+    text-align: center;
+    padding: 80px 20px;
+    background: linear-gradient(rgba(255, 250, 240, 0.8), rgba(255, 250, 240, 0.8)), url('https://via.placeholder.com/1500x500/F4A460/FFF?text=Fresh+Baked+Goods') no-repeat center center/cover;
+    margin-bottom: 40px;
+    border-radius: 8px;
+}
+
+.hero-title {
+    font-size: 4em;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.hero-description {
+    font-size: 1.4em;
+    color: var(--text-dark);
+    max-width: 700px;
+    margin: 0 auto 30px;
+}
+
+.hero-button {
+    font-size: 1.2em;
+    padding: 15px 35px;
+}
+
+/* Homepage Content */
+.home-content {
+    padding: 20px 0;
+    text-align: center;
+}
+
+.home-content h2 {
+    color: var(--accent-color);
+    margin-bottom: 1em;
+}
+
+/* Recent Posts Section */
+.recent-posts {
+    margin-top: 60px;
+    padding: 40px 0;
+    background-color: #f8f8f8;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.recent-posts h2 {
+    color: var(--primary-color);
+    margin-bottom: 40px;
+}
+
+.post-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    text-align: left;
+}
+
+.post-item {
+    background-color: var(--text-light);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
+}
+
+.post-item:hover {
+    transform: translateY(-5px);
+}
+
+.post-item h3 {
+    font-size: 1.5em;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.post-item h3 a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.post-item .post-meta {
+    font-size: 0.9em;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+.post-item p {
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+
+.post-item .read-more {
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+/* Single Post/Page Styling */
+.post-single, .page-header, .list-container {
+    background-color: var(--text-light);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    max-width: 800px;
+    margin: 40px auto;
+}
+
+.post-header {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.post-title {
+    font-size: 3em;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.post-meta {
+    font-size: 1em;
+    color: #777;
+}
+
+.post-content {
+    line-height: 1.8;
+    font-size: 1.1em;
+}
+
+.post-content h2, .post-content h3 {
+    color: var(--accent-color);
+    margin-top: 1.8em;
+    margin-bottom: 0.8em;
+}
+
+.post-content ul, .post-content ol {
+    margin-left: 20px;
+    margin-bottom: 1em;
+}
+
+/* List Pages (e.g., Blog) */
+.page-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.page-title {
+    font-size: 3em;
+    color: var(--primary-color);
+    margin-top: 0;
+}
+
+.list-item {
+    border-bottom: 1px solid var(--border-color);
+    padding: 30px 0;
+}
+
+.list-item:last-child {
+    border-bottom: none;
+}
+
+.list-item h2 {
+    font-size: 2em;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.list-item h2 a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.list-item h2 a:hover {
+    text-decoration: underline;
+}
+
+.list-meta {
+    font-size: 0.9em;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+/* Footer */
+#site-footer {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 50px 0 20px;
+    margin-top: 50px;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-section h3 {
+    color: var(--secondary-color);
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.6em;
+}
+
+.footer-section p, .footer-section a {
+    color: var(--text-light);
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+.footer-section a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+.copyright {
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    padding-top: 20px;
+    font-size: 0.9em;
+    color: rgba(255,255,255,0.8);
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .hero-title {
+        font-size: 3em;
+    }
+}
+
+@media (max-width: 768px) {
+    .site-title {
+        font-size: 2em;
+    }
+
+    #site-nav {
+        display: none; /* Hide nav by default on smaller screens */
+    }
+
+    .header-content {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .site-title {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .menu-toggle {
+        display: block; /* Show toggle button */
+        position: absolute;
+        right: 20px;
+        top: 20px;
+    }
+
+    /* Basic mobile menu toggle JS would be needed here, but for static CSS, we just show/hide */
+    /* Example: .site-nav.active { display: block; } */
+
+    .hero-section {
+        padding: 60px 15px;
+    }
+    .hero-title {
+        font-size: 2.5em;
+    }
+    .hero-description {
+        font-size: 1.2em;
+    }
+    .hero-button {
+        padding: 10px 25px;
+        font-size: 1.1em;
+    }
+
+    .post-single, .page-header, .list-container {
+        padding: 25px;
+        margin: 25px auto;
+    }
+
+    .post-title, .page-title {
+        font-size: 2.2em;
+    }
+
+    .post-list {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-section {
+        min-width: unset;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 { font-size: 2.2em; }
+    h2 { font-size: 1.8em; }
+    h3 { font-size: 1.5em; }
+
+    .site-title {
+        font-size: 1.8em;
+    }
+    .hero-title {
+        font-size: 2em;
+    }
+    .hero-description {
+        font-size: 1em;
+    }
+
+    .post-title, .page-title {
+        font-size: 1.8em;
+    }
+}
+    </style>
+</head>
+<body>
+    <header id="site-header">
+        <div class="container header-content">
+            <a href="http://example.org/" class="site-title">The Flour & Bloom Bakery</a>
+            <nav id="site-nav">
+                <ul>
+                    <li><a href="http://example.org/">Home</a></li>
+                    <li><a href="http://example.org/about/">About Us</a></li>
+                    <li><a href="http://example.org/menu/">Our Menu</a></li>
+                    <li><a href="http://example.org/posts/">Blog</a></li>
+                    <li><a href="http://example.org/contact/">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
+        </div>
+    </header>
+    <main id="content">
+        <div class="container">
+            <section class="hero-section">
+                <h1 class="hero-title">Welcome to The Flour & Bloom Bakery</h1>
+                <p class="hero-description">Your neighborhood spot for artisanal bread, delightful pastries, and custom cakes, baked fresh daily with love.</p>
+                <a href="http://example.org/menu/" class="button hero-button">View Our Menu</a>
+            </section>
+            <section class="home-content">
+                <h2>Our Story</h2>
+                <p>Nestled in the heart of Anytown, The Flour & Bloom Bakery is more than just a place to grab a bite; it's a community hub where the aroma of freshly baked goods fills the air and every item tells a story of passion and tradition. We believe in using only the finest, locally sourced ingredients to craft our treats, ensuring a taste that's both authentic and unforgettable.</p>
+                <p>From our flaky croissants and chewy sourdoughs to our exquisite custom cakes, each product is made with dedication and a sprinkle of magic. We're proud to serve our community and share our love for baking with you.</p>
+                <h2>What We Offer</h2>
+                <ul>
+                    <li><strong>Artisan Breads:</strong> Sourdough, Rye, Ciabatta, Baguettes</li>
+                    <li><strong>Pastries:</strong> Croissants, Danishes, Muffins, Scones</li>
+                    <li><strong>Cakes & Desserts:</strong> Custom Cakes, Cupcakes, Tarts, Cookies</li>
+                    <li><strong>Coffee & Tea:</strong> Freshly brewed to complement your treat</li>
+                </ul>
+                <p>Come visit us and experience the warmth and taste of homemade goodness!</p>
+            </section>
+            <section class="recent-posts">
+                <h2>From Our Blog</h2>
+                <div class="post-list">
+                    <article class="post-item">
+                        <h3><a href="http://example.org/posts/welcome/">A Warm Welcome to Our New Blog!</a></h3>
+                        <div class="post-meta">
+                            <time datetime="2023-10-20T09:00:00-07:00">October 20, 2023</time>
+                        </div>
+                        <p>Discover the latest news, recipes, and stories from The Flour & Bloom Bakery.</p>
+                        <a href="http://example.org/posts/welcome/" class="read-more">Read More &rarr;</a>
+                    </article>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer id="site-footer">
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>The Flour & Bloom Bakery</h3>
+                <p>Freshly baked goods, artisan bread, and delicious pastries.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Find Us</h3>
+                <p>123 Main Street, Anytown, USA</p>
+                <p>Phone: (555) 123-4567</p>
+                <p>Email: <a href="mailto:hello@flourandbloom.com">hello@flourandbloom.com</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Hours</h3>
+                <p>Mon-Sat: 7 AM - 6 PM, Sun: 8 AM - 3 PM</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 The Flour & Bloom Bakery. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
